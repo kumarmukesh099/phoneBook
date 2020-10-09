@@ -1,0 +1,6 @@
+  "bcryptjs": "^2.4.3",  // handle hashing and passwords because we should never store plain passwords
+    "config": "^3.3.2", //for making available as global variable
+    "express": "^4.17.1", //  web framework handle routing
+    "express-validator": "^6.6.1", //use to validate the body like email passwords
+    "jsonwebtoken": "^8.5.1", //use it for authentication 
+    "mongoose": "^5.10.9",  // we can add delete and other things and create schema and all
