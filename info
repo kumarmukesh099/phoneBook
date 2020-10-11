@@ -4,3 +4,9 @@
     "express-validator": "^6.6.1", //use to validate the body like email passwords
     "jsonwebtoken": "^8.5.1", //use it for authentication 
     "mongoose": "^5.10.9",  // we can add delete and other things and create schema and all
+
+    in config , we have everything which is available for everything
+    default.json - access to it in our entire project
+
+  It is important to have models in our app which define what type of structure of data your app consists or we can say in models we defines schema
+
