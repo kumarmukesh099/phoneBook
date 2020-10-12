@@ -10,3 +10,6 @@
 
   It is important to have models in our app which define what type of structure of data your app consists or we can say in models we defines schema
 
+  Define a schema and use it :  create its structure using mongoose.schema({}) 
+                                then mongoose.models where we define the model name and schema name and
+                                then we can assign value to it using new Schema and then save it
