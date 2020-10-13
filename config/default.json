@@ -1,3 +1,4 @@
 {
-    "mongoURI" : "mongodb+srv://phonebook:phonebook123@contactkeeper.vnez6.mongodb.net/<dbname>?retryWrites=true&w=majority"
+    "mongoURI" : "mongodb+srv://phonebook:phonebook123@contactkeeper.vnez6.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwt_secret" : "secretkey"
 }

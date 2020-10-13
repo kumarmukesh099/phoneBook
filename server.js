@@ -1,6 +1,5 @@
 const express =  require("express");
 const app = express();
-const connecDB = require('./config/db');
 const connectDB = require("./config/db");
 
 app.get('/',(req,res)=>{

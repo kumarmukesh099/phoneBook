@@ -13,3 +13,8 @@
   Define a schema and use it :  create its structure using mongoose.schema({}) 
                                 then mongoose.models where we define the model name and schema name and
                                 then we can assign value to it using new Schema and then save it
+
+
+  We are creating a folder middleware where we authenticate everytime whenever we access some private routes means a logged in user want to access his/her profile
+
+  whenever we have a middlewarefunction we use to do next to exceute the next middlewarefunction

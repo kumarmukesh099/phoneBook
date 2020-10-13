@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const {check , validationResult} = require('express-validator');
 const User = require('../models/User');
-const bycrypt = require('bcryptjs')
+const bycrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
 
 // @route    POST api/users
@@ -41,7 +43,17 @@ check('password', 'Please enter a password of 6 or more characters').isLength({m
 
         await user.save(); 
 
-        res.send("User Saved")
+        const payload = {
+            user : {
+                id : user.id
+            }
+        }
+
+        let token = jwt.sign(payload,config.get('jwt_secret'),{     //in third parameter we pass the option, here we pass the time of expiration of token
+            expiresIn : 360000
+        }) 
+
+        res.json({token})
         
     } catch (error) {
         console.log("Error Message =>", error.message);  
