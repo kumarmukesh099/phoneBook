@@ -8,18 +8,7 @@ const auth = require('../middleware/auth');
 // @route    GET api/contacts
 //@desc      Get all users contacts
 // @access   Private
-router.get('/', auth, [
-    check('name', 'Please add a name').not().isEmpty(),
-    check('email', 'Please enter a valid email').isEmail(),
-    check('phone', 'Please enter a correct Indian Phone number').isMobilePhone("en-IN"),
-    check('type', 'Please add the type of this contacts').not().isEmpty()
-
-], async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() })
-    }
-
+router.get('/', auth, async(req,res)=>{
     try {
         const contacts = await Contact.find({ user: req.user.id }).sort({ date: -1 }) //recent 1
         res.json(contacts);
@@ -41,7 +30,17 @@ router.get('/', (req, res) => {
 // @route    POST api/contacts
 //@desc      Add a new contact
 // @access   Private
-router.post('/', auth, (req, res) => {
+router.post('/', auth, [
+    check('name', 'Please add a name').not().isEmpty(),
+    check('email', 'Please enter a valid email').isEmail(),
+    check('phone', 'Please enter a correct Indian Phone number').isMobilePhone("en-IN"),
+    check('type', 'Please add the type of this contacts').not().isEmpty()
+
+], async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+    }
     try {
         const { name, email, phone, type } = req.body;
         const newContact = new Contact({
