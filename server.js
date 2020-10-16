@@ -1,17 +1,27 @@
 const express =  require("express");
 const app = express();
 const connectDB = require("./config/db");
+const path = require('path');
 
-app.get('/',(req,res)=>{
-    res.json({msg : "Welcome to the PhoneBook"})
-})
+// app.get('/',(req,res)=>{
+//     res.json({msg : "Welcome to the PhoneBook"})
+// })
 
 //Connect DB
 connectDB();
 
-//init middleware
-app.use(express.json({extended : false}))
 
+
+//init middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }))
+
+
+
+//render regsiter form
+app.get('/',(req,res)=>{
+    res.sendFile(path.join(__dirname,'register.html'))
+})
 
 //Define Routes
 app.use('/api/users',require('./routes/users'));
