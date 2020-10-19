@@ -18,3 +18,35 @@
   We are creating a folder middleware where we authenticate everytime whenever we access some private routes means a logged in user want to access his/her profile
 
   whenever we have a middlewarefunction we use to do next to exceute the next middlewarefunction
+
+
+  to use normal form-data
+  const multiparty = require('multiparty');
+
+app.post('/user-form-post', (req,res) =>{
+
+   let form = new multiparty.Form();
+
+   form.parse(req, function(err, fields, files) {
+      Object.keys(fields).forEach(function(name) {
+           console.log('got field named ' + name);
+       });
+   });
+})
+
+//install react app
+npm create-react-app foldername
+
+to run react concurrently
+
+  "scripts": {
+    "test": "node server.js",      //to run the normal nodejs server
+    "start" : "nodemon server.js",  //to run the normal nodemon server
+    "client" : "npm start --prefix client",  //to run the react server in client folder
+    "clientinstall": "npm start  --prefix client", //to install the things in client folder
+    "dev": "concurrently \npm run start\" \"npm run client\"" to run the react and node concurrently
+  },
+
+  //to run react normally we use npm start
+
+  //we add proxy in react so that instead of using http://localhost we can directly use the localhost
