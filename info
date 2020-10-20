@@ -49,4 +49,18 @@ to run react concurrently
 
   //to run react normally we use npm start
 
-  //we add proxy in react so that instead of using http://localhost we can directly use the localhost
+  //we add proxy in react so that instead of using http://localhost:5000 we can directly use the localhost
+
+
+  install it in client folder while using react axios , react-router-dom for router , switches and route and uuid(id generator) for dealing with db and 
+  react-transition-group
+
+
+import PropTypes from 'prop-types'
+  Navbar.propTypes = {
+    title : PropTypes.string.isRequired
+}
+Navbar.defaultProps = {
+    title : 'Contact PhoneBook'
+}
+this is the way to use propTypes
