@@ -71,3 +71,9 @@ this is the way to use propTypes
           <Route exact path="/" component={Home} /> //if we will not use exact then switch check /and will not check the next one
           <Route exact path="/About" component={About} />
         </Switch>
+
+
+  //Context we have four files
+  Folder > contatContext.js(Just to initialise the context) contactReducer.js contactState.js 
+  and types.js
+
