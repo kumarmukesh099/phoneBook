@@ -74,6 +74,12 @@ this is the way to use propTypes
 
 
   //Context we have four files
-  Folder > contatContext.js(Just to initialise the context) contactReducer.js contactState.js 
+  Folder > contactContext.js(Just to initialise the context) contactReducer.js contactState.js 
   and types.js
 
+  We use contactState to use in app.js and use contactContext to use the value in other place
+
+import ContactContext from './contactContext';
+import ContactReducer from './contactReducer'; //should be in capital letters
+
+{type.charAt(0).toUpperCase() + type.slice(1)} //chartAt(0) get the first letter and then Uppercase make it uppercase and then slice take rest of the letters in slice(start) 

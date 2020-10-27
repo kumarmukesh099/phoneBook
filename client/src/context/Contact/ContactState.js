@@ -31,11 +31,11 @@ const Contactstate = (props) =>{
                  "type": "personal"
             },
             {
-                "id" : "2",
+                "id" : "3",
                 "name": "Sita",
                 "email":"Sita@tes111t.com",
                 "phone": "9898787671",
-                 "type": "personal"
+                 "type": "professional"
             }
         ]
     }
