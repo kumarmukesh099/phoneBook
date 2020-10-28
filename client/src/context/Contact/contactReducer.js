@@ -10,6 +10,13 @@ import {
 
 export default(state , action)=>{
     switch(action.type){
+        case ADD_CONTACT : 
+        return {
+            ...state,
+            contacts :  [...state.contacts,action.payload] //...state.contacts it take the current data and the override it by action.payload
+        }
+
+
         default : return state
     }
 }

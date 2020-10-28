@@ -82,4 +82,25 @@ this is the way to use propTypes
 import ContactContext from './contactContext';
 import ContactReducer from './contactReducer'; //should be in capital letters
 
-{type.charAt(0).toUpperCase() + type.slice(1)} //chartAt(0) get the first letter and then Uppercase make it uppercase and then slice take rest of the letters in slice(start) 
+{type.charAt(0).toUpperCase() + type.slice(1)} //chartAt(0) get the first letter and then Uppercase make it uppercase and then slice take rest of the letters in slice(start)   
+
+
+
+<ul className="list">
+                {email && (<li>
+                    <i className="fas fa-phone" /> {email}
+                </li>)}
+            </ul>  //we use && here if first one is true then it print next 
+
+
+
+const [contact, setContact] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        type: 'personal'
+    })            
+
+    use state is use to set the initial value and we can set the value to the variables using setvariable_name(value)
+    here contact is object and declared initial value ass in useState
+    it can be const [contact, setContact] = useState([])  //blank array   
