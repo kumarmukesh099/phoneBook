@@ -44,14 +44,17 @@ const Contactstate = (props) =>{
 const [state , dispatch] = useReducer(ContactReducer, initialState); //state allow us to access any state and dispatch allow us to access it to reducer
 
 //console.log("===============>", state)
-//Add contact
 
+//Add contact
 const addContact =  (contact)=>{
     contact.id = v4();
     dispatch({type:ADD_CONTACT , payload : contact})
 }
 
 //Delete contact
+const deleteContact =  (id)=>{
+    dispatch({type:DELETE_CONTACT , payload : id})
+}
 
 //Set current contact
 
@@ -67,7 +70,8 @@ return (
     <ContactContext.Provider
     value = {{
         contacts : state.contacts,
-        addContact
+        addContact,
+        deleteContact
     }}
     >
         {props.children}

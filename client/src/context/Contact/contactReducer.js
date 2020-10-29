@@ -15,6 +15,11 @@ export default(state , action)=>{
             ...state,
             contacts :  [...state.contacts,action.payload] //...state.contacts it take the current data and the override it by action.payload
         }
+        case DELETE_CONTACT:
+            return{
+                ...state,
+                contacts : state.contacts.filter(contact => contact.id != action.payload)
+            }
 
 
         default : return state
