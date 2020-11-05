@@ -36,8 +36,9 @@ const Contactstate = (props) =>{
                 "email":"Sita@tes111t.com",
                 "phone": "9898787671",
                  "type": "professional"
-            }
-        ]
+            },
+        ],
+        current : null
     }
 
     
@@ -57,8 +58,14 @@ const deleteContact =  (id)=>{
 }
 
 //Set current contact
+const currentContact =  (current)=>{
+    dispatch({type:SET_CURRENT, payload : current})
+}
 
 //Clear current contact
+const clearContact =  ()=>{
+    dispatch({type:CLEAR_CURRENT})
+}
 
 //Update the contact
 
@@ -71,7 +78,9 @@ return (
     value = {{
         contacts : state.contacts,
         addContact,
-        deleteContact
+        deleteContact,
+        currentContact,
+        clearContact
     }}
     >
         {props.children}
