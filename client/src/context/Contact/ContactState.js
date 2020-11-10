@@ -60,14 +60,18 @@ const deleteContact =  (id)=>{
 //Set current contact
 const currentContact =  (current)=>{
     dispatch({type:SET_CURRENT, payload : current})
+    console.log("==============>",current)
+}
+
+//Update the contact
+const updateContact =  (contact)=>{
+    dispatch({type:UPDATE_CONTACT, payload : contact})
 }
 
 //Clear current contact
 const clearContact =  ()=>{
     dispatch({type:CLEAR_CURRENT})
 }
-
-//Update the contact
 
 //Filter the contact
 
@@ -77,9 +81,11 @@ return (
     <ContactContext.Provider
     value = {{
         contacts : state.contacts,
+        current : state.current,
         addContact,
         deleteContact,
         currentContact,
+        updateContact,
         clearContact
     }}
     >

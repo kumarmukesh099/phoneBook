@@ -13,17 +13,22 @@ export default (state, action) => {
         case ADD_CONTACT:
             return {
                 ...state,
-                contacts: [...state.contacts, action.payload] //...state.contacts it take the current data and the override it by action.payload
+                contacts: [...state.contacts, action.payload] //...state.contacts it take the current data and then add it by action.payload
             }
         case DELETE_CONTACT:
             return {
                 ...state,
-                contacts: state.contacts.filter(contact => contact.id != action.payload)
+                contacts: state.contacts.filter(contact => contact.id !== action.payload)
             }
         case SET_CURRENT:
             return {
                 ...state,
-                current: state.payload
+                current: action.payload
+            }
+        case UPDATE_CONTACT:
+            return {
+                ...state,
+                contacts: state.contacts.map(contact => contact.id === action.payload.id ? action.payload  :contact)
             }
         case CLEAR_CURRENT:
             return {
