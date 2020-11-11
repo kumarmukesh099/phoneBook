@@ -104,3 +104,45 @@ const [contact, setContact] = useState({
     use state is use to set the initial value and we can set the value to the variables using setvariable_name(value)
     here contact is object and declared initial value ass in useState
     it can be const [contact, setContact] = useState([])  //blank array   
+
+
+       filtered: state.contacts.filter(contact =>{
+                        const regex = new RegExp(`${action.payload}` , 'gi') //global insensitive
+                        return contact.name.match(regex);
+                    }) //use to match the content and return the result and we use gi for case insensitive i.e. same lower and upper case
+
+
+
+                    Instead of creating state we can use Ref
+                    import React, { useContext , useRef ,useEffect } from 'react';
+import contactContext from '../../context/Contact/contactContext';
+const ContactFilter = () => {
+    const ContactContext = useContext(contactContext);
+    const {filterContacts,clearFilters,filtered} = ContactContext
+    const text = useRef('');
+
+    useEffect(() => {
+        if(filtered != "null"){
+            text.current.value = '';
+        }
+    }, [])
+
+
+    const onChange = (e)=>{
+        if(text.current.value !== "null"){
+            filterContacts(e.target.value)
+        }
+        else {
+            clearFilters()
+        }
+    }
+
+    //ref is like reference we can use it wherever we want
+    return (
+        <form>
+            <input ref={text} type="text" placeholder="Filter Contacts..." onChange={onChange}></input>
+        </form>
+    )
+}
+
+export default ContactFilter
