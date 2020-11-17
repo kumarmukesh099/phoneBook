@@ -146,3 +146,16 @@ const ContactFilter = () => {
 }
 
 export default ContactFilter
+
+
+react-transition-group
+https://reactcommunity.org/react-transition-group/transition-group
+        <TransitionGroup>
+            {
+                filtered !== null ? filtered.map(contact => <ContactItem key={contact.id} contact={contact} />
+                ) : contacts.map(contact => (
+                    <CSSTransition key={contact.id} timeout={5000} classNames="item">
+                        <ContactItem contact={contact} />
+                    </CSSTransition>
+                ))}
+        </TransitionGroup>

@@ -19,21 +19,21 @@ const Contactstate = (props) =>{
             {
                 "id" : "1",
                 "name": "Ram",
-                "email":"Ram@tes111t.com",
+                "email":"Ram@testgmail.com",
                 "phone": "9898787671",
                  "type": "personal"
             },
             {
                 "id" : "2",
                 "name": "Lakshman",
-                "email":"Lakshman@tes111t.com",
+                "email":"Lakshman@testgmail.com",
                 "phone": "9898787671",
                  "type": "personal"
             },
             {
                 "id" : "3",
                 "name": "Sita",
-                "email":"Sita@tes111t.com",
+                "email":"Sita@testgmail.com",
                 "phone": "9898787671",
                  "type": "professional"
             },
