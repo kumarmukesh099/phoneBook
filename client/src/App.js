@@ -4,8 +4,11 @@ import Navbar from './component/layout/Navbar';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './component/layout/Pages/Home';
 import About from './component/layout/Pages/About';
+import Register from './component/auth/Register';
+import Login from './component/auth/Login';
 import AuthState from './context/auth/AuthState';
 import ContactState from './context/Contact/ContactState';
+
 
 const App = () => {
   return (
@@ -18,6 +21,8 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/About" component={About} />
+          <Route exact path="/Register" component={Register} />
+          <Route exact path="/Login" component={Login} />
         </Switch>
       </div>
       </Fragment>

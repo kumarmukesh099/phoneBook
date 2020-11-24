@@ -159,3 +159,20 @@ https://reactcommunity.org/react-transition-group/transition-group
                     </CSSTransition>
                 ))}
         </TransitionGroup>
+
+
+
+
+//This is the way to set value is object using useState()
+const Register = () => {
+    const [user , setUser] = useState({
+        name : '',
+        email :'',
+        password :'',
+        confirm_password : ''
+    })
+const onChange =(e)=>{
+    console.log("user print", [e.target.name] ,e.target.value)
+        setUser({...user,[e.target.name]: e.target.value})
+        console.log("user print after", user)
+}   
