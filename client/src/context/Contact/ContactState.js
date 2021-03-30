@@ -1,4 +1,4 @@
-import React , { useReducer } from 'react';
+import React, { useReducer } from 'react';
 import { v4 } from 'uuid';
 import ContactContext from './contactContext';
 import ContactReducer from './contactReducer';
@@ -9,100 +9,100 @@ import {
     CLEAR_CURRENT,
     UPDATE_CONTACT,
     FILTER_CONTACT,
-    CLEAR_FILTER 
+    CLEAR_FILTER
 } from '../types';
 
-const Contactstate = (props) =>{
+const ContactState = (props) => {
 
     const initialState = {
-        contacts : [
+        contacts: [
             {
-                "id" : "1",
+                "id": "1",
                 "name": "Ram",
-                "email":"Ram@testgmail.com",
+                "email": "Ram@testgmail.com",
                 "phone": "9898787671",
-                 "type": "personal"
+                "type": "personal"
             },
             {
-                "id" : "2",
+                "id": "2",
                 "name": "Lakshman",
-                "email":"Lakshman@testgmail.com",
+                "email": "Lakshman@testgmail.com",
                 "phone": "9898787671",
-                 "type": "personal"
+                "type": "personal"
             },
             {
-                "id" : "3",
+                "id": "3",
                 "name": "Sita",
-                "email":"Sita@testgmail.com",
+                "email": "Sita@testgmail.com",
                 "phone": "9898787671",
-                 "type": "professional"
+                "type": "professional"
             },
         ],
-        current : null,
-        filtered : null
+        current: null,
+        filtered: null
     }
 
-    
-const [state , dispatch] = useReducer(ContactReducer, initialState); //state allow us to access any state and dispatch allow us to access it to reducer
 
-//console.log("===============>", state)
+    const [state, dispatch] = useReducer(ContactReducer, initialState); //state allow us to access any state and dispatch allow us to access it to reducer
 
-//Add contact
-const addContact =  (contact)=>{
-    contact.id = v4();
-    dispatch({type:ADD_CONTACT , payload : contact})
-}
+    //console.log("===============>", state)
 
-//Delete contact
-const deleteContact =  (id)=>{
-    dispatch({type:DELETE_CONTACT , payload : id})
-}
+    //Add contact
+    const addContact = (contact) => {
+        contact.id = v4();
+        dispatch({ type: ADD_CONTACT, payload: contact })
+    }
 
-//Set current contact
-const currentContact =  (current)=>{
-    dispatch({type:SET_CURRENT, payload : current})
-    console.log("==============>",current)
-}
+    //Delete contact
+    const deleteContact = (id) => {
+        dispatch({ type: DELETE_CONTACT, payload: id })
+    }
 
-//Update the contact
-const updateContact =  (contact)=>{
-    dispatch({type:UPDATE_CONTACT, payload : contact})
-}
+    //Set current contact
+    const currentContact = (current) => {
+        dispatch({ type: SET_CURRENT, payload: current })
+        console.log("==============>", current)
+    }
 
-//Clear current contact
-const clearContact =  ()=>{
-    dispatch({type:CLEAR_CURRENT})
-}
+    //Update the contact
+    const updateContact = (contact) => {
+        dispatch({ type: UPDATE_CONTACT, payload: contact })
+    }
 
-//Filter the contact
-const filterContacts =  (text)=>{
-    dispatch({type:FILTER_CONTACT ,  payload: text})
-}
+    //Clear current contact
+    const clearContact = () => {
+        dispatch({ type: CLEAR_CURRENT })
+    }
 
-//Clear Filters
-const clearFilter =()=>{
-    dispatch({type:CLEAR_FILTER})
-}
+    //Filter the contact
+    const filterContacts = (text) => {
+        dispatch({ type: FILTER_CONTACT, payload: text })
+    }
 
-return ( 
-    <ContactContext.Provider
-    value = {{
-        contacts : state.contacts,
-        current : state.current,
-        filtered : state.filtered,
-        addContact,
-        deleteContact,
-        currentContact,
-        updateContact,
-        clearContact,
-        filterContacts,
-        clearFilter
-        }}
-    >
-        {props.children}
-    </ContactContext.Provider>
+    //Clear Filters
+    const clearFilter = () => {
+        dispatch({ type: CLEAR_FILTER })
+    }
+
+    return (
+        <ContactContext.Provider
+            value={{
+                contacts: state.contacts,
+                current: state.current,
+                filtered: state.filtered,
+                addContact,
+                deleteContact,
+                currentContact,
+                updateContact,
+                clearContact,
+                filterContacts,
+                clearFilter
+            }}
+        >
+            {props.children}
+        </ContactContext.Provider>
     );
 };
 
 
-export default Contactstate;
+export { ContactState };

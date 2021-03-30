@@ -7,7 +7,7 @@ import About from './component/layout/Pages/About';
 import Register from './component/auth/Register';
 import Login from './component/auth/Login';
 import AuthState from './context/auth/AuthState';
-import ContactState from './context/Contact/ContactState';
+import {ContactState} from './context/Contact/ContactState';
 
 
 const App = () => {
