@@ -1,6 +1,6 @@
 import React , { useReducer } from 'react';
-import AuthContext from './AuthContext';
-import AuthReducer from './AuthReducer';
+import authContext from './authContext';
+import authReducer from './authReducer';
 import { 
       REGISTER_SUCCESS,
       REGISTER_FAIL,
@@ -23,7 +23,10 @@ const Authstate = (props) =>{
     }
 
     
-const [state , dispatch] = useReducer(AuthReducer, initialState); //state allow us to access any state and dispatch allow us to access it to reducer
+const [state , dispatch] = useReducer(authReducer, initialState); //state allow us to access any state and dispatch allow us to access it to reducer
+//reducer function with the application initial state, returns the current application state, then dispatches a function
+//https://css-tricks.com/getting-to-know-the-usereducer-react-hook/ for reference
+
 
 //Load User
 
@@ -37,7 +40,7 @@ const [state , dispatch] = useReducer(AuthReducer, initialState); //state allow 
 
 
 return ( 
-    <AuthContext.Provider
+    <authContext.Provider
     value = {{
         token : state.token,
         isAuthenticated : state.isAuthenticated,
@@ -46,7 +49,7 @@ return (
         }}
     >
         {props.children}
-    </AuthContext.Provider>
+    </authContext.Provider>
     );
 };
 
