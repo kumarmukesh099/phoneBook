@@ -22,6 +22,8 @@ const AlertState = (props) => {
             type: SET_ALERT,
             payload: { msg, type, id }
         })
+        console.log("setALert" , msg , type,timeout)
+
 
         setInterval(() => dispatch({ type: REMOVE_ALERT, payload: id }), timeout);
     }

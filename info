@@ -184,3 +184,17 @@ AlertState i.e. state should in capital letters in context
 //state allow us to access any state and dispatch allow us to access it to reducer
 //reducer function with the application initial state, returns the current application state, then dispatches a function
 //https://css-tricks.com/getting-to-know-the-usereducer-react-hook/ for reference
+
+ props.history.push('/') //use to redirect
+
+
+    useEffect(() => {
+        if(isAuthenticated){
+            props.history.push('/') //use to redirect
+        }
+        if(error !=null){
+            setAlert(error , 'danger');
+            clearError(); 
+        } //eslint-disable-next-line
+    }, [error,isAuthenticated,props.history]) //f present, effect will only activate if the values in the list change.
+//if empty array then it will run whenever the component is loaded

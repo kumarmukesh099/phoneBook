@@ -1,6 +1,8 @@
 import React , { useReducer } from 'react';
 import authContext from './authContext';
 import authReducer from './authReducer';
+import axios from 'axios';
+import setAuthToken from '../../utils/setAuthToken';
 import { 
       REGISTER_SUCCESS,
       REGISTER_FAIL,
@@ -14,12 +16,12 @@ import {
 } from '../types';
 
 const Authstate = (props) =>{
-
     const initialState = {
         token : localStorage.getItem('token'), //our browser local storage
         isAuthenticated : null,
         loading : true,
-        error : null
+        error : null,
+        user : null
     }
 
     
@@ -29,14 +31,46 @@ const [state , dispatch] = useReducer(authReducer, initialState); //state allow 
 
 
 //Load User
+const loadUser = async ()=>{
+    //load token into global headers
+    if(localStorage.token){
+        setAuthToken(localStorage.token);
+    }
+    try {
+        let loadUserResponse = await axios.get('/api/auth');
+        dispatch({type : USER_LOADED , payload  : loadUserResponse.data})   
+    } catch (error) {
+        dispatch({type : AUTH_ERROR})
+    }
+}
 
 //Register User
+const Register = async(formData)=>{
+try {
+    let requestData = {
+        url : '/api/users',
+        data : formData,
+        method : 'POST',
+        headers : {
+            'Content-Type' : 'application/json'
+        }
+    }
+    let response = await axios(requestData);
+    //    let response = await axios(url, data,cofig);
+    dispatch({type : REGISTER_SUCCESS , payload : response.data});
+    loadUser();
+} catch (error) {
+    dispatch({type : REGISTER_FAIL , payload: error.response.data.msg})
+}
+
+}
 
 //Login User
 
 //Logout User
 
 //Clear Errors
+ const clearError = ()=> dispatch({type : CLEAR_ERROR})
 
 
 return ( 
@@ -45,7 +79,11 @@ return (
         token : state.token,
         isAuthenticated : state.isAuthenticated,
         loading : state.loading,
-        error : state.error
+        error : state.error,
+        user : state.user,
+        Register,
+        clearError,
+        loadUser
         }}
     >
         {props.children}
