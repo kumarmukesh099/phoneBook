@@ -30,7 +30,7 @@ const ContactForm = () => {
     }, [contactContext,current])
 
 
-    const onChange = (e) => setContact({ ...contact, [e.target.name]: [e.target.value] })
+    const onChange = (e) => setContact({ ...contact, [e.target.name]: e.target.value })
     //...contact get the current object and e.target.name i.e. key take it from form name and set the value
 
     const onSubmit = (e) => {
@@ -52,9 +52,9 @@ const ContactForm = () => {
     return (
         <form onSubmit={onSubmit}>
             <h2 className="text-primary">{current ? 'Edit Contact' : 'Add Contact'}</h2>
-            <input type="text" placeholder="name" name="name" value={name} onChange={onChange} />
-            <input type="text" placeholder="email" name="email" value={email} onChange={onChange} />
-            <input type="text" placeholder="phone" name="phone" value={phone} onChange={onChange} />
+            <input type="text" placeholder="name" name="name" value={name} onChange={onChange} required />
+            <input type="text" placeholder="email" name="email" value={email} onChange={onChange} required/>
+            <input type="text" placeholder="phone" name="phone" value={phone} onChange={onChange} required/>
             <h5>Contact Type</h5>
             <input type="radio" name="type" value="personal"  onChange={onChange} />{' '}Personal   {'   '}
             <input type="radio" name="type" value="professional" onChange={onChange} />{' '}Professional

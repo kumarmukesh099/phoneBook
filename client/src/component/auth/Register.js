@@ -12,12 +12,11 @@ const Register = (props) => {
         if(isAuthenticated){
             props.history.push('/') //use to redirect
         }
-        console.log("Erorrrrrrrrrrrr", error)
         if(error != null){
             setAlert(error , 'danger');
             clearError(); 
         } //eslint-disable-next-line
-    }, [error]) //f present, effect will only activate if the values in the list change.
+    }, [error,isAuthenticated]) //f present, effect will only activate if the values in the list change.
 
 
     const [user, setUser] = useState({

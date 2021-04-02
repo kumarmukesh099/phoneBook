@@ -52,8 +52,6 @@ router.post('/', auth, [
         })
         newContact.save();
         res.json(newContact)
-
-
     } catch (error) {
         console.log("Error Message =>", err.message);
         return res.status(500).send('Server Error');
