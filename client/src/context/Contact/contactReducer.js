@@ -16,7 +16,7 @@ export default (state, action) => {
         case ADD_CONTACT:
             return {
                 ...state,
-                contacts: [...state.contacts, action.payload], //...state.contacts it take the current data and then add it by action.payload
+                contacts: [action.payload, ...state.contacts], //...state.contacts it take the current data and then add it by action.payload
                 loading: false
             }
         case GET_CONTACT:
@@ -43,9 +43,8 @@ export default (state, action) => {
         case DELETE_CONTACT:
             return {
                 ...state,
-                contacts: state.contacts.filter(contact => contact.id !== action.payload),
+                contacts: state.contacts.filter(contact => contact._id !== action.payload),
                 loading: false
-
             }
         case SET_CURRENT:
             return {
@@ -55,7 +54,7 @@ export default (state, action) => {
         case UPDATE_CONTACT:
             return {
                 ...state,
-                contacts: state.contacts.map(contact => contact.id === action.payload.id ? action.payload : contact)
+                contacts: state.contacts.map(contact => contact._id === action.payload._id ? action.payload : contact)
             }
         case CLEAR_CURRENT:
             return {

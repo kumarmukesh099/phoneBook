@@ -12,7 +12,7 @@ const ContactForm = () => {
         type: 'personal'
     })
     const { name, email, phone, type } = contact;
-    const {addContact , current , clearContact , updateContact} = contactContext;
+    const {addContact , current , clearContact , updateContact ,clearCurrent} = contactContext;
 
     useEffect(()=>{
         if(current != null){
@@ -40,6 +40,7 @@ const ContactForm = () => {
         }
         else{
             updateContact(contact);
+            clearCurrent();
         }
         setContact({
             name: '',

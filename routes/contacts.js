@@ -3,6 +3,7 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const Contact = require('../models/Contact');
 const auth = require('../middleware/auth');
+const { findByIdAndUpdate } = require('../models/Contact');
 
 
 // @route    GET api/contacts
@@ -61,15 +62,40 @@ router.post('/', auth, [
 // @route    PUT api/contacts/:id
 //@desc      Update existing contact
 // @access   Private
-router.put('/', (req, res) => {
-    res.send("Updating existing contact")
+router.put('/:id',auth, async(req, res) => {
+    try {
+        let findUser = await Contact.findById(req.params.id);
+        if(!findUser) {
+            return res.status(404).json({msg : "User not found"});
+        }
+        let data = {};
+        if(req.body.name) data.name = req.body.name;
+        if(req.body.email) data.email = req.body.email;
+        if(req.body.phone) data.phone = req.body.phone;
+        if(req.body.type) data.type = req.body.type;
+        await Contact.findByIdAndUpdate(req.params.id,data)
+        res.status(200).json({msg : "Contact Updated"});
+    } catch (error) {
+        return res.status(500).send('Server Error');
+    }
 })
 
 // @route    DELETE api/contacts/:id
 //@desc      DELETE contact
 // @access   Private
-router.delete('/', (req, res) => {
-    res.send("Delete contact")
+router.delete('/:id', auth ,async (req, res) => {
+    try {
+        let findUser = await Contact.findById(req.params.id);
+        if(!findUser) {
+            return res.status(404).json({msg : "User not found"});
+        }
+        await Contact.f(req.params.id)
+        Contact.remove({_id :req.params.id })
+        res.status(200).json({msg : "Contact Deleted"});
+    } catch (error) {
+        return res.status(500).send('Server Error');
+    }
 })
+
 
 module.exports = router

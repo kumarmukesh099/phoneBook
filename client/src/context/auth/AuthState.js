@@ -40,7 +40,7 @@ const Authstate = (props) => {
             let loadUserResponse = await axios.get('/api/auth');
             dispatch({ type: USER_LOADED, payload: loadUserResponse.data })
         } catch (error) {
-            dispatch({ type: AUTH_ERROR })
+            dispatch({ type: AUTH_ERROR,payload: error.response.data.msg })
         }
     }
 
