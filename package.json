@@ -1,5 +1,5 @@
 {
-  "name": "phoneBook",
+  "name": "phonebook",
   "version": "1.0.0",
   "description": "Contact Manager App",
   "main": "server.js",
